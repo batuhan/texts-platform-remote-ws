@@ -6,6 +6,7 @@ export enum Api {
   CREATE_THREAD = "createThread",
   SEND_MESSAGE = "sendMessage",
   LOGIN = "login",
+  INIT = "init",
 }
 
 export const DEFAULT_HEADERS = {
