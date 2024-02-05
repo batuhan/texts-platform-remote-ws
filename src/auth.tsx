@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-// import QRCode from 'qrcode.react'
 import type { AuthProps } from "@textshq/platform-sdk";
 
 export const Auth: React.FC<AuthProps> = ({ login }) => {
   const [baseURL, setBaseURL] = useState<string>("http://localhost:8080");
+  const [wsURL, setWSURL] = useState<string>("wss://ws.postman-echo.com/raw/");
   const [label, setLabel] = useState<string>("Test");
 
   const handleLogin = () => {
     if (login) {
-      login({ custom: { label, baseURL } });
+      login({ custom: { label, baseURL, wsURL } });
     }
   };
 
@@ -42,6 +42,25 @@ export const Auth: React.FC<AuthProps> = ({ login }) => {
             }
             style={{ width: "100%" }}
             placeholder="Enter Base URL"
+          />
+        </div>
+        <div
+          style={{
+            width: "70%",
+          }}
+        >
+          <label htmlFor="base-url" style={{ width: "90%" }}>
+            WS URL
+          </label>
+          <input
+            id="base-url"
+            type="text"
+            value={wsURL}
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+              setWSURL(event.target.value)
+            }
+            style={{ width: "100%" }}
+            placeholder="Enter WS URL"
           />
         </div>
         <div
